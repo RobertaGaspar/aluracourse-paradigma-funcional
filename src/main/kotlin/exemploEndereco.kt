@@ -1,11 +1,11 @@
 class Endereco(
-    val logradouro: String = "",
-    val numero: Int = 0,
-    val complemento: String = "",
-    val bairro: String = "",
-    val cidade: String = "",
-    val estado: String = "",
-    val cep: String = "",
+    var logradouro: String = "",
+    var numero: Int = 0,
+    var complemento: String = "",
+    var bairro: String = "",
+    var cidade: String = "",
+    var estado: String = "",
+    var cep: String = "",
 ) {
     override fun toString(): String {
         return """
@@ -45,5 +45,13 @@ complemento='$complemento')
         result = 31 * result + cep.hashCode()
         result = 31 * result + complemento.hashCode()
         return result
+    }
+
+    fun completo(): String {
+        return """  
+            $logradouro - $numero, $bairro, $cidade - $estado
+            $cep
+            $complemento
+        """.trimIndent()
     }
 }
